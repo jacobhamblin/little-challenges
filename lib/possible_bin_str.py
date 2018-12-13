@@ -1,21 +1,25 @@
+def two_from_wild(str, index):
+    first = list(str)
+    second = list(str)
+    first[index] = '0'
+    second[index] = '1'
+    return [''.join(first), ''.join(second)]
+
+
 def poss_recur(str):
     list_str = list(str)
     wilds = []
     for index, char in enumerate(list_str):
         if char == '?':
             wilds.append(index)
+    strings = [str]
     if not len(wilds):
         return [str]
     if len(wilds) == 1:
-        result = []
-        first = list(list_str)
-        second = list(list_str)
-        first[wilds[0]] = '0'
-        second[wilds[0]] = '1'
-        result.append(''.join(first))
-        result.append(''.join(second))
-        return result
-    return 
+        return two_from_wild(str, wilds[0])
+    else:
+        poss = two_from_wild(str, wilds[0])
+        return poss_recur(poss[0]) + poss_recur(poss[1])
 
 
 def poss_iter(str):
