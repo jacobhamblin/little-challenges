@@ -15,8 +15,6 @@ def poss_recur(str):
     strings = [str]
     if not len(wilds):
         return [str]
-    if len(wilds) == 1:
-        return two_from_wild(str, wilds[0])
     else:
         poss = two_from_wild(str, wilds[0])
         return poss_recur(poss[0]) + poss_recur(poss[1])
