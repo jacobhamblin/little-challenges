@@ -19,7 +19,7 @@ def recurse(input):
     if len(input) == 1:
         return list(input)
     permutations = [input[0]]
-    return get_perms(permutations, input[1:])
+    return list(set(get_perms(permutations, input[1:])))
 
 
 def iterate(input):
@@ -42,4 +42,4 @@ def iterate(input):
                 new_perms.append(''.join(new_perm))
             new_permutations += new_perms
         permutations = new_permutations
-    return permutations
+    return list(set(permutations))

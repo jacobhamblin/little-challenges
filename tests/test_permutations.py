@@ -6,9 +6,11 @@ def test_empty_string():
     helpers.expect_equal(permutations.recurse(''), [])
     helpers.expect_equal(permutations.iterate(''), [])
 
+
 def test_length_one():
     helpers.expect_equal(permutations.recurse('a'), ['a'])
     helpers.expect_equal(permutations.iterate('a'), ['a'])
+
 
 def test_length_two():
     helpers.expect_equal(
@@ -20,6 +22,7 @@ def test_length_two():
         sorted(['ab', 'ba'])
     )
 
+
 def test_length_three():
     helpers.expect_equal(
         sorted(permutations.recurse('abc')),
@@ -29,6 +32,7 @@ def test_length_three():
         sorted(permutations.iterate('abc')),
         sorted(['abc', 'bac', 'acb', 'bca', 'cab', 'cba'])
     )
+
 
 def test_length_four():
     helpers.expect_equal(
@@ -46,4 +50,20 @@ def test_length_four():
             'decq', 'deqc', 'dqce', 'dqec', 'ecdq', 'ecqd', 'edcq', 'edqc',
             'eqcd', 'eqdc', 'qcde', 'qced', 'qdce', 'qdec', 'qecd', 'qedc',
         ])
+    )
+
+
+def test_simple_duplicates():
+    helpers.expect_equal(permutations.recurse('aaa'), ['aaa'])
+    helpers.expect_equal(permutations.iterate('aaa'), ['aaa'])
+
+
+def test_more_complex_duplicates():
+    helpers.expect_equal(
+        sorted(permutations.recurse('aab')),
+        sorted(['baa', 'aba', 'aab'])
+    )
+    helpers.expect_equal(
+        sorted(permutations.iterate('aab')),
+        sorted(['baa', 'aba', 'aab'])
     )
