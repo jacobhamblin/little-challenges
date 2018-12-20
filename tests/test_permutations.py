@@ -1,5 +1,5 @@
 from lib import permutations
-from . import helpers 
+from . import helpers
 
 
 def test_empty_string():
@@ -66,4 +66,31 @@ def test_more_complex_duplicates():
     helpers.expect_equal(
         sorted(permutations.iterate('aab')),
         sorted(['baa', 'aba', 'aab'])
+    )
+
+
+def test_empty_str_bin_str():
+    helpers.expect_equal(sorted(permutations.binary_string_recurse('')), sorted(['']))
+    helpers.expect_equal(sorted(permutations.binary_string_iterate('')), sorted(['']))
+
+
+def test_one_wild_bin_str():
+    helpers.expect_equal(
+        sorted(permutations.binary_string_recurse('10?1')),
+        sorted(['1001', '1011'])
+    )
+    helpers.expect_equal(
+        sorted(permutations.binary_string_iterate('10?1')),
+        sorted(['1001', '1011'])
+    )
+
+
+def test_two_wilds_bin_str():
+    helpers.expect_equal(
+        sorted(permutations.binary_string_recurse('10?1?')),
+        sorted(['10010', '10110', '10011', '10111'])
+    )
+    helpers.expect_equal(
+        sorted(permutations.binary_string_iterate('10?1?')),
+        sorted(['10010', '10110', '10011', '10111'])
     )
