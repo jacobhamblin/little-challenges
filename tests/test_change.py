@@ -4,8 +4,7 @@ from . import helpers
 
 def test_no_change():
     helpers.expect_equal(change.fewest_coins(0, []), [])
-    helpers.expect_equal(change.fewest_coins(0, [1, 5]), [])
-    helpers.expect_equal(change.fewest_coins(-5, [1, 5]), [])
+    helpers.expect_equal(change.fewest_coins(0, [1, 5]), [0, 0])
 
 
 def test_up_to_one_of_each_coin():
@@ -21,5 +20,7 @@ def test_multiple_of_a_coin():
 
 
 def test_strange_coins():
-    helpers.expect_equal(change.fewest_coins(13, [3, 6, 7]), [2, 0, 1])
+    helpers.expect_equal(change.fewest_coins(19, [2, 7, 11]), [4, 0, 1])
+    helpers.expect_equal(change.fewest_coins(13, [3, 6, 7]), [0, 1, 1])
     helpers.expect_equal(change.fewest_coins(24, [5, 8, 12]), [0, 0, 2])
+    helpers.expect_equal(change.fewest_coins(28, [8, 10, 12]), [2, 0, 1])
