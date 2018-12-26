@@ -26,3 +26,14 @@ def test_longest_word_duplicates():
         word_dictionary.longest_word('lilm', ['lim', 'mill']),
         'mill'
     )
+
+
+def test_longest_word_with_wild():
+    helpers.expect_equal(
+        word_dictionary.longest_word('rac*car', ['car', 'race', 'racecar']),
+        'racecar'
+    )
+    helpers.expect_equal(
+        word_dictionary.longest_word('****', ['it', 'mine', 'a', 'er']),
+        'mine'
+    )

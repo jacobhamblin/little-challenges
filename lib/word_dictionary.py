@@ -16,8 +16,12 @@ def longest_word(string, list_of_words):
             for char in word:
                 available_letters_copy[char] -= 1
                 if available_letters_copy[char] < 0:
-                    word_works = False
-                    break
+                    if available_letters_copy['*']:
+                        available_letters_copy['*'] -= 1
+                        available_letters_copy[char] = 0
+                    else:
+                        word_works = False
+                        break
             if word_works:
                 longest_length = len(word)
                 word_index = index
