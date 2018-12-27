@@ -1,6 +1,7 @@
 from collections import defaultdict
 from copy import copy
 
+
 def longest_word(string, list_of_words):
     longest_length = 0
     word_index = -1
