@@ -5,26 +5,30 @@ from lib import sort
 SORTING_ALGORITHMS = [sort.quicksort]
 
 
-def test_quicksort_sorts_small_list():
+def test_sorts_small_list():
+    unsorted_arrays = [
+        [5,4], [3,1,2], [4.2,18.9,2.1], [300,9,1], [1,4,8,3]
+    ]
     for function in SORTING_ALGORITHMS:
-        helpers.expect_equal(function([5,4]), [4,5])
-        helpers.expect_equal(function([3,1,2]), [1,2,3])
-        helpers.expect_equal(function([4.2,18.9,2.1]), [2.1,4.2,18.9])
-        helpers.expect_equal(function([300,9,1]), [1,9,300])
-        helpers.expect_equal(function([1,4,8,3]), [1,3,4,8])
+        for array in unsorted_arrays:
+            helpers.expect_equal(function(array), sorted(array))
 
 
-def test_quicksort_sorts_duplicates():
+def test_sorts_duplicates():
+    unsorted_arrays = [
+        [3,1,5,5,2,8,6,5], [1,1,1], [0,-1,-3,0,-1,7]
+    ]
     for function in SORTING_ALGORITHMS:
-        test_arr = [3,1,5,5,2,8,6,5]
-        helpers.expect_equal(function(test_arr), sorted(test_arr))
+        for array in unsorted_arrays:
+            helpers.expect_equal(function(array), sorted(array))
 
 
-def test_quicksort_sorts_larger_lists():
+def test_sorts_larger_lists():
+    unsorted_arrays = [
+        [3,1,5,2,8,6],
+        [9,4,2,1,23,5,43,89,0,-12,-500],
+        [-25, 0, 9.3, 2.1, 2.04, -6, 13, 18],
+    ]
     for function in SORTING_ALGORITHMS:
-        test_arr = [3,1,5,2,8,6]
-        helpers.expect_equal(function(test_arr), sorted(test_arr))
-        test_arr = [9,4,2,1,23,5,43,89,0,-12,-500]
-        helpers.expect_equal(function(test_arr), sorted(test_arr))
-        test_arr = [-25, 0, 9.3, 2.1, 2.04, -6, 13, 18]
-        helpers.expect_equal(function(test_arr), sorted(test_arr))
+        for array in unsorted_arrays:
+            helpers.expect_equal(function(array), sorted(array))
