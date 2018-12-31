@@ -1,10 +1,7 @@
 class LinkedListNode:
     def __init__(self, value, next_node):
         self.value = value
-        if next_node:
-            self.next = next_node
-        else:
-            self.next = None
+        self.next = next_node
 
     def set_next(self, next_node):
         self.next = next_node
