@@ -2,6 +2,8 @@ class GraphNode:
     def __init__(self, value, connected_nodes):
         self.value = value
         self.connected_nodes = connected_nodes
+    def __str__(self):
+        return 'GraphNode-%s' % self.value
 
     def add_connection(self, node):
         if not node in self.connected_nodes:

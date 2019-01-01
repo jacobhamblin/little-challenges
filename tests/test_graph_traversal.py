@@ -13,3 +13,7 @@ def test_graph_from_dict():
         test_graph[1].connected_nodes,
         [test_graph[2], test_graph[3]]
     )
+    helpers.expect_equal(
+        test_graph[2].connected_nodes,
+        [test_graph[1], test_graph[3], test_graph[4]]
+    )
