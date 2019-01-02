@@ -2,7 +2,7 @@ from . import helpers
 from lib import graph_traversal
 
 
-functions = ['dfs', 'bfs']
+FUNCTIONS = ['dfs', 'bfs']
 
 
 def test_graph_from_dict():
@@ -38,7 +38,7 @@ def test_no_cycle():
         [10, 8],
         [10, 10],
     ]
-    for function_name in functions:
+    for function_name in FUNCTIONS:
         function = getattr(graph_traversal, function_name)
         for start_and_target in starts_and_targets:
             graph = graph_traversal.make_unvisited_graph_dict_nodes(graph)
@@ -54,7 +54,7 @@ def test_no_cycle():
         [3, 5],
         [5, 5],
     ]
-    for function_name in functions:
+    for function_name in FUNCTIONS:
         function = getattr(graph_traversal, function_name)
         for start_and_target in starts_and_targets:
             graph = graph_traversal.make_unvisited_graph_dict_nodes(graph)
@@ -73,7 +73,7 @@ def test_with_cycles():
         [10, 8],
         [10, 10],
     ]
-    for function_name in functions:
+    for function_name in FUNCTIONS:
         function = getattr(graph_traversal, function_name)
         for start_and_target in starts_and_targets:
             graph = graph_traversal.make_unvisited_graph_dict_nodes(graph)
@@ -89,7 +89,7 @@ def test_with_cycles():
         [3, 5],
         [5, 5],
     ]
-    for function_name in functions:
+    for function_name in FUNCTIONS:
         function = getattr(graph_traversal, function_name)
         for start_and_target in starts_and_targets:
             graph = graph_traversal.make_unvisited_graph_dict_nodes(graph)
