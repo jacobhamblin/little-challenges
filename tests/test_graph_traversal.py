@@ -2,7 +2,7 @@ from . import helpers
 from lib import graph_traversal
 
 
-functions = ['dfs']
+functions = ['dfs', 'bfs']
 
 
 def test_graph_from_dict():
@@ -29,7 +29,7 @@ def test_graph_from_dict_less_duplication():
     )
 
 
-def test_no_loop():
+def test_no_cycle():
     graph = {10: [5, 15], 5: [3,8], 15: [13, 18]}
     graph = graph_traversal.generate_graph_from_dict(graph)
     starts_and_targets = [
@@ -64,7 +64,7 @@ def test_no_loop():
             )
 
 
-def test_with_loops():
+def test_with_cycles():
     graph = {10: [5, 15], 5: [3,8], 15: [13, 18], 13: [5, 15]}
     graph = graph_traversal.generate_graph_from_dict(graph)
     starts_and_targets = [

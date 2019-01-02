@@ -42,3 +42,22 @@ def dfs(current, target):
         recursed = dfs(connected_node, target)
         if recursed:
             return recursed
+
+
+def _bfs(target, node_queue):
+    node = node_queue[0]
+    setattr(node, 'visited', True)
+    if node.value == target:
+        return node
+    for connected_node in node.connected_nodes:
+        visited = getattr(connected_node, 'visited', None)
+        if visited:
+            continue
+        node_queue.append(connected_node)
+    recursed = _bfs(target, node_queue[1:])
+    if recursed:
+        return recursed
+
+
+def bfs(current, target):
+    return _bfs(target, [current])
