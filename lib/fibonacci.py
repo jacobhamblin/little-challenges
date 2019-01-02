@@ -19,3 +19,14 @@ def iter(n):
     for num in xrange(2, n + 1):
         recorded[num] = recorded[num - 2] + recorded[num - 1]
     return recorded[n]
+
+
+def iter_two(n):
+    prev = 1
+    current = 0
+    i = 0
+    for num in xrange(n):
+        next = prev + current
+        prev = current
+        current = next
+    return current

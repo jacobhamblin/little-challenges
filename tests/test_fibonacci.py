@@ -2,9 +2,8 @@ from . import helpers
 from lib import fibonacci
 
 
-FUNCTIONS = ['recur', 'memo', 'iter']
-
-FAST_FUNCTIONS = ['memo', 'iter']
+FAST_FUNCTIONS = ['memo', 'iter', 'iter_two']
+FUNCTIONS = ['recur'] + FAST_FUNCTIONS
 
 
 def test_small_n():
