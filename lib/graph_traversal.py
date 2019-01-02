@@ -14,9 +14,25 @@ class GraphNode:
 
 def generate_graph_from_dict(graph_dictionary):
     nodes = {}
-    for key, value in graph_dictionary.iteritems():
+    for key, value_list in graph_dictionary.iteritems():
         nodes[key] = GraphNode(key, [])
-    for key, value in graph_dictionary.iteritems():
-        for connected_node_value in value:
+        for graph_node_value in value_list:
+            if not graph_node_value in nodes:
+                nodes[graph_node_value] = GraphNode(graph_node_value, [])
+    for key, value_list in graph_dictionary.iteritems():
+        for connected_node_value in value_list:
             nodes[key].add_connection(nodes[connected_node_value])
     return nodes
+
+
+def dfs(current, target):
+    if current.value == target:
+        return current
+    for connected_node in current.connected_nodes:
+        visited = getattr(connected_node, 'visited', None)
+        if visited:
+            continue
+        setattr(connected_node, 'visited', True)
+        return dfs(connected_node, target)
+    return None
+
