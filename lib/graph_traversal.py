@@ -26,7 +26,7 @@ def generate_graph_from_dict(graph_dictionary):
 
 
 def make_unvisited_graph_dict_nodes(graph_dict):
-    for key, value in graph_dict.iteritems():
+    for key, _ in graph_dict.iteritems():
         setattr(graph_dict[key], 'visited', False)
     return graph_dict
 
@@ -46,14 +46,13 @@ def dfs(current, target):
 
 def _bfs(target, node_queue):
     node = node_queue[0]
-    setattr(node, 'visited', True)
     if node.value == target:
         return node
+    setattr(node, 'visited', True)
     for connected_node in node.connected_nodes:
         visited = getattr(connected_node, 'visited', None)
-        if visited:
-            continue
-        node_queue.append(connected_node)
+        if not visited:
+            node_queue.append(connected_node)
     recursed = _bfs(target, node_queue[1:])
     if recursed:
         return recursed
