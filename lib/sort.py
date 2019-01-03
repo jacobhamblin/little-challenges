@@ -7,6 +7,28 @@ def quicksort(array):
     return quicksort(less) + [pivot] * array.count(pivot) + quicksort(more)
 
 
+def _quicksort_in_place(array, start, end):
+    if end - start > 0:
+        pivot = array[start]
+        left = start
+        right = end
+        while array[start] < pivot:
+            start += 1
+        while array[end] > pivot:
+            end -= 1
+        if start <= end:
+            array[start], array[end] = array[end], array[start]
+            start += 1
+            end -= 1
+        _quicksort_in_place(array, start, right)
+        _quicksort_in_place(array, left, end)
+
+
+def quicksort_in_place(array):
+    _quicksort_in_place(array, 0, len(array) - 1)
+    return array
+
+
 def merge(left, right):
     result = []
     left_index = 0
@@ -35,3 +57,13 @@ def merge_sort(array):
     right = merge_sort(right)
     return list(merge(left, right))
 
+
+def insertion(array):
+    for i in xrange(1, len(array)):
+        j = i - 1
+        key = array[i]
+        while (array[j] > key) and (j >= 0):
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = key
+    return array
