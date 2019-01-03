@@ -14,14 +14,14 @@ def memo(n):
     return _memo(n, {0: 0, 1: 1})
 
 
-def iter(n):
+def iterative(n):
     recorded = {0: 0, 1: 1}
     for num in xrange(2, n + 1):
         recorded[num] = recorded[num - 2] + recorded[num - 1]
     return recorded[n]
 
 
-def iter_two(n):
+def iterative_two(n):
     prev = 1
     current = 0
     i = 0
@@ -30,3 +30,9 @@ def iter_two(n):
         prev = current
         current = next
     return current
+
+
+FIBONACCI = {
+    'slow': [recur],
+    'fast': [memo, iterative, iterative_two],
+}
