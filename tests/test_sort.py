@@ -35,3 +35,14 @@ def test_sorts_larger_lists():
         function = getattr(sort, function_name)
         for array in unsorted_arrays:
             helpers.expect_equal(function(array), sorted(array))
+
+
+def test_radix_sort():
+    unsorted_arrays = [
+        [-2, 5, 2, 7, 99, 3, 2],
+        [0, 15, 1, -7, 2],
+        [1, 1, 1, 0],
+        [-50, 4, 9, 0],
+    ]
+    for array in unsorted_arrays:
+        helpers.expect_equal(sort.Radix(array).sort(), sorted(array))

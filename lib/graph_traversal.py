@@ -1,5 +1,5 @@
 class GraphNode:
-    def __init__(self, value, connected_nodes):
+    def __init__(self, value, connected_nodes=[]):
         self.value = value
         self.connected_nodes = connected_nodes
     def __str__(self):
@@ -18,7 +18,7 @@ def generate_graph_from_dict(graph_dictionary):
         nodes[key] = GraphNode(key, [])
         for graph_node_value in value_list:
             if not graph_node_value in nodes:
-                nodes[graph_node_value] = GraphNode(graph_node_value, [])
+                nodes[graph_node_value] = GraphNode(graph_node_value)
     for key, value_list in graph_dictionary.iteritems():
         for connected_node_value in value_list:
             nodes[key].add_connection(nodes[connected_node_value])
