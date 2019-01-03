@@ -28,3 +28,26 @@ def _bin_recur_indices(list, value, start, end):
 
 def bin_recur_indices(list, value):
     return _bin_recur_indices(list, value, 0, len(list) - 1)
+
+
+def bin_recur_iter(list, value):
+    start = 0
+    end = len(list) - 1
+    while end > start:
+        mid_index = (end - start / 2) + start
+        if list[mid_index] == value:
+            return mid_index
+        elif list[mid_index] > value:
+            end = mid_index - 1
+        else:
+            start = mid_index + 1
+    if len(list) and list[end] == value:
+        return end
+    return -1
+
+
+BINARY = {
+    'recur': bin_recur,
+    'recur_with_indices': bin_recur_indices,
+    'recur_iter': bin_recur_iter,
+}
