@@ -24,3 +24,25 @@ def test_strange_coins():
     helpers.expect_equal(change.fewest_coins(13, [3, 6, 7]), [0, 1, 1])
     helpers.expect_equal(change.fewest_coins(24, [5, 8, 12]), [0, 0, 2])
     helpers.expect_equal(change.fewest_coins(28, [8, 10, 12]), [2, 0, 1])
+
+
+def test_no_steps():
+    helpers.expect_equal(change.staircase(0, [1, 2]), 1)
+    helpers.expect_equal(change.staircase(1, [2]), 0)
+
+
+def test_other_one_way():
+    helpers.expect_equal(change.staircase(2, [2, 3]), 1)
+    helpers.expect_equal(change.staircase(1, [1, 2]), 1)
+
+
+def test_standard_steps():
+    helpers.expect_equal(change.staircase(4, [1, 2]), 5)
+    helpers.expect_equal(change.staircase(3, [1, 2]), 3)
+
+
+def test_nonstandard_steps():
+    helpers.expect_equal(change.staircase(4, [3, 4]), 1)
+    helpers.expect_equal(change.staircase(10, [2, 5, 7]), 2)
+    helpers.expect_equal(change.staircase(3, [1, 3]), 2)
+    helpers.expect_equal(change.staircase(6, [1, 3]), 6)
