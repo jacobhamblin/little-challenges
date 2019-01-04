@@ -46,3 +46,4 @@ def test_nonstandard_steps():
     helpers.expect_equal(change.staircase(10, [2, 5, 7]), 2)
     helpers.expect_equal(change.staircase(3, [1, 3]), 2)
     helpers.expect_equal(change.staircase(6, [1, 3]), 6)
+    helpers.expect_equal(change.staircase(30, [5, 8, 3]), 233)
