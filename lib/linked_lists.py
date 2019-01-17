@@ -49,3 +49,6 @@ def common_node(first_node, second_node):
         node = node.next
         other_node = other_node.next
     return None
+
+def find_cycle(head):
+    return False
