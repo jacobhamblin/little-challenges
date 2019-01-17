@@ -18,7 +18,6 @@ def linked_list_from_list(list):
             list_of_nodes[index - 1].set_next(item)
     return list_of_nodes[0]
 
-
 def common_node(first_node, second_node):
     first_length = 1
     second_length = 1
