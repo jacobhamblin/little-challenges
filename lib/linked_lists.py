@@ -51,4 +51,13 @@ def common_node(first_node, second_node):
     return None
 
 def find_cycle(head):
+    if not head or not head.next:
+        return False
+    tortoise = head
+    hare = head
+    while hare.next and hare.next.next:
+        tortoise = tortoise.next
+        hare = hare.next.next
+        if tortoise == hare:
+            return True
     return False
