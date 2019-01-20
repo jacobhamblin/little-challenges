@@ -18,7 +18,22 @@ def is_anagram(first, second):
     return True
 
 def longest_substring_without_duplicate(string):
+    seen = {}
     current = 0
     longest = 0
     i = 0
-    return 0
+    while True:
+        if i == len(string):
+            break
+        letter = string[i]
+        if letter in seen:
+            if current > longest:
+                longest = current
+            i = seen[letter]
+            current = 0
+            seen = {}
+        else:
+            seen[letter] = i
+            current += 1
+        i += 1
+    return longest if longest > current else current

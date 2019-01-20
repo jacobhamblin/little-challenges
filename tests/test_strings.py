@@ -22,6 +22,6 @@ def test_is_anagram_normal_cases():
 def test_longest_substring_without_duplicate():
     func = strings.longest_substring_without_duplicate
     helpers.expect_equal(func('abcbabccb'), 3)
-    helpers.expect_equal(func('twtadst'), 4)
+    helpers.expect_equal(func('twtadst'), 5)
     helpers.expect_equal(func('mbmookl'), 3)
     helpers.expect_equal(func(''), 0)
