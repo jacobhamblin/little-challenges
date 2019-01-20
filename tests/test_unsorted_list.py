@@ -46,3 +46,10 @@ def test_largest_sum_non_adjacent():
     helpers.expect_equal(func([5, 1, 1, 5]), 10)
     helpers.expect_equal(func([1, 2, 5, 8, 1]), 10)
     helpers.expect_equal(func([-1, -10, 5, 2, -3, 4]), 9)
+
+def test_pairs_add_to_k():
+    FUNCTION_NAMES = ['pairs_add_to_k', 'pairs_add_to_k_linear']
+    for function_name in FUNCTION_NAMES:
+        func = getattr(unsorted_list, function_name)
+        helpers.expect_equal(func([2,5,3,1,7], 8), set(((5,3), (1,7))))
+        helpers.expect_equal(func([3,4,2,5,8,6], 10), set(((4,6), (2,8))))

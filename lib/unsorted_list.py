@@ -64,3 +64,21 @@ def largest_sum_non_adjacent(arr):
         exc = new_exc
 
     return exc if exc > inc else inc
+
+def pairs_add_to_k(arr, k):
+    pairs = set()
+    for first in xrange(0, len(arr)):
+        for second in xrange(first + 1, len(arr)):
+            if arr[first] + arr[second] == k:
+                pairs.add((arr[first], arr[second]))
+    return pairs
+
+def pairs_add_to_k_linear(arr, k):
+    pairs = set()
+    partials = set()
+    for num in arr:
+        if k - num in partials:
+            pairs.add((k - num, num))
+        else:
+            partials.add(num)
+    return pairs
