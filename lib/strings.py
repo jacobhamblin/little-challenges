@@ -16,3 +16,9 @@ def is_anagram(first, second):
         if letters[key] != 0:
             return False
     return True
+
+def longest_substring_without_duplicate(string):
+    current = 0
+    longest = 0
+    i = 0
+    return 0
