@@ -70,7 +70,8 @@ def pairs_add_to_k(arr, k):
     for first in xrange(0, len(arr)):
         for second in xrange(first + 1, len(arr)):
             if arr[first] + arr[second] == k:
-                pairs.add((arr[first], arr[second]))
+                if (arr[second], arr[first]) not in pairs:
+                    pairs.add((arr[first], arr[second]))
     return pairs
 
 def pairs_add_to_k_linear(arr, k):
@@ -79,6 +80,7 @@ def pairs_add_to_k_linear(arr, k):
     for num in arr:
         if k - num in partials:
             pairs.add((k - num, num))
+            partials.remove(k - num)
         else:
             partials.add(num)
     return pairs

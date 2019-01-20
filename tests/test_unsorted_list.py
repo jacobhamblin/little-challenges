@@ -53,3 +53,4 @@ def test_pairs_add_to_k():
         func = getattr(unsorted_list, function_name)
         helpers.expect_equal(func([2,5,3,1,7], 8), set(((5,3), (1,7))))
         helpers.expect_equal(func([3,4,2,5,8,6], 10), set(((4,6), (2,8))))
+        helpers.expect_equal(func([8,3,4,8,2,6,8], 10), set(((4,6), (8,2))))
