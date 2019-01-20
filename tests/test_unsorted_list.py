@@ -40,3 +40,9 @@ def test_kth_largest_basics():
     helpers.expect_equal(func([3,1,2,-1,4], 1), 4)
     helpers.expect_equal(func([3,1,2,-1,4], 3), 2)
     
+def test_largest_sum_non_adjacent():
+    func = unsorted_list.largest_sum_non_adjacent
+    helpers.expect_equal(func([2, 4, 6, 2, 5]), 13)
+    helpers.expect_equal(func([5, 1, 1, 5]), 10)
+    helpers.expect_equal(func([1, 2, 5, 8, 1]), 10)
+    helpers.expect_equal(func([-1, -10, 5, 2, -3, 4]), 9)

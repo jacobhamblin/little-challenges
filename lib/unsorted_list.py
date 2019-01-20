@@ -53,3 +53,14 @@ def kth_largest(unsorted_list, k):
         return kth_largest(lesser, k - (len(greater) + first_item_count))
     else:
         return first_item
+
+def largest_sum_non_adjacent(arr):
+    inc = 0
+    exc = 0
+
+    for n in arr:
+        new_exc = inc if inc > exc else exc
+        inc = exc + n
+        exc = new_exc
+
+    return exc if exc > inc else inc
