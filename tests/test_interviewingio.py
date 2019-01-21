@@ -7,3 +7,4 @@ def test_things():
     func = interviewingio.unique_half_candies
     expect(func([3, 4, 7, 7, 6, 6]), 3)
     expect(func([80, 80, 1000000000, 80, 80, 80, 80, 80, 80, 123456789]), 3)
+    expect(func([1,2,3,4,3,4,4,5]), 4)
