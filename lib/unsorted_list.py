@@ -84,3 +84,9 @@ def pairs_add_to_k_linear(arr, k):
         else:
             partials.add(num)
     return pairs
+
+def merge_sorted_lists_kn_log_kn(arr):
+    return arr
+
+def merge_sorted_lists_kn_log_k(arr):
+    return arr

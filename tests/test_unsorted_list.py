@@ -54,3 +54,25 @@ def test_pairs_add_to_k():
         helpers.expect_equal(func([2,5,3,1,7], 8), set(((5,3), (1,7))))
         helpers.expect_equal(func([3,4,2,5,8,6], 10), set(((4,6), (2,8))))
         helpers.expect_equal(func([8,3,4,8,2,6,8], 10), set(((4,6), (8,2))))
+
+def test_merge_sorted_lists():
+    expectations = [
+        [
+            [[10, 15, 30], [12, 15, 20], [17, 20, 32]],
+            [10, 12, 15, 15, 17, 20, 20, 32]
+        ],
+        [
+            [[1]],
+            [1],
+        ],
+        [
+            [[]],
+            [],
+        ],
+    ]
+    expect = helpers.expect_equal
+    FUNCTION_NAMES = {'merge_sorted_lists_kn_log_kn', 'merge_sorted_lists_kn_log_k'}
+    for function_name in FUNCTION_NAMES:
+        func = getattr(unsorted_list, function_name)
+        for expectation in expectations:
+            expect(func(expectation[0]), expectation[1])
