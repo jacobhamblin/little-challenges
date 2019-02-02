@@ -85,8 +85,29 @@ def pairs_add_to_k_linear(arr, k):
             partials.add(num)
     return pairs
 
-def merge_sorted_lists_kn_log_kn(arr):
-    return arr
+def merge_sorted_lists_kn_log_kn(arrs):
+    flat = [el for arr in arrs for el in arr]
+    return sorted(flat)
 
-def merge_sorted_lists_kn_log_k(arr):
-    return arr
+def merge_sorted_lists_kn_log_k(arrs):
+    num_arrs = len(arrs)
+    positions = [0] * num_arrs
+    merged = []
+    if not num_arrs or not len(arrs[0]):
+        return merged
+    unfinished = [True] * num_arrs
+    while any(unfinished):
+        arr_index_with_min = 0
+        min_num = 999999
+        for arr_index in xrange(len(arrs)):
+            if unfinished[arr_index] == False:
+                continue
+            index_to_consider = positions[arr_index]
+            if arrs[arr_index][index_to_consider] < min_num:
+                arr_index_with_min = arr_index
+                min_num = arrs[arr_index][index_to_consider]
+        merged.append(min_num)
+        positions[arr_index_with_min] += 1
+        if positions[arr_index_with_min] >= len(arrs[0]):
+            unfinished[arr_index_with_min] = False
+    return merged

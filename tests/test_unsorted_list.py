@@ -59,16 +59,10 @@ def test_merge_sorted_lists():
     expectations = [
         [
             [[10, 15, 30], [12, 15, 20], [17, 20, 32]],
-            [10, 12, 15, 15, 17, 20, 20, 32]
+            [10, 12, 15, 15, 17, 20, 20, 30, 32]
         ],
-        [
-            [[1]],
-            [1],
-        ],
-        [
-            [[]],
-            [],
-        ],
+        [ [[1]], [1], ],
+        [ [[]], [], ],
     ]
     expect = helpers.expect_equal
     FUNCTION_NAMES = {'merge_sorted_lists_kn_log_kn', 'merge_sorted_lists_kn_log_k'}
