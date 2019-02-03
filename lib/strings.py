@@ -44,8 +44,26 @@ def regex_match(s, pattern):
 
     first_match = bool(s) and pattern[0] in {s[0], '.'}
 
-    if len(pattern) >= 2 and pattern[1] == '*':
-        return (regex_match(s, pattern[2:]) or
-                first_match and regex_match(s[1:], pattern))
+    if len(pattern) > 1 and pattern[1] == '*':
+        return (
+            regex_match(s, pattern[2:]) or first_match
+            and regex_match(s[1:], pattern)
+        )
     else:
         return first_match and regex_match(s[1:], pattern[1:])
+
+def regex_match_linear(s, pattern):
+    memo = {}
+    def dp(i, j):
+        if (i, j) not in memo:
+            if j == len(pattern):
+                ans = i == len(s)
+            else:
+                first_match = i < len(s) and pattern[j] in {s[i], '.'}
+                if j + 1 < len(pattern) and pattern[j + 1] == '*':
+                    ans = dp(i, j + 2) or first_match and dp(i + 1, j)
+                else:
+                    ans = first_match and dp(i + 1, j + 1)
+            memo[i, j] = ans
+        return memo[i, j]
+    return dp(0, 0)

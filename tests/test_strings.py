@@ -30,14 +30,16 @@ def test_longest_substring_without_duplicate():
     expect(func(''), 0)
 
 def test_regex_match():
-    func = strings.regex_match
-    expect(func('ab', 'ab'), True)
-    expect(func('abc', 'a.c'), True)
-    expect(func('bbc', 'b*bc'), True)
-    expect(func('bbc', 'b.*'), True)
-    expect(func('', '.*'), True)
-    expect(func('', '.'), False)
-    expect(func('abab', 'a*b*c'), False)
-    expect(func('abab', 'a*b*'), False)
-    expect(func('ab', 'ba'), False)
+    FUNCTION_NAMES = {'regex_match', 'regex_match_linear'}
+    for function_name in FUNCTION_NAMES:
+        func = getattr(strings, function_name)
+        expect(func('ab', 'ab'), True)
+        expect(func('abc', 'a.c'), True)
+        expect(func('bbc', 'b*bc'), True)
+        expect(func('bbc', 'b.*'), True)
+        expect(func('', '.*'), True)
+        expect(func('', '.'), False)
+        expect(func('abab', 'a*b*c'), False)
+        expect(func('abab', 'a*b*'), False)
+        expect(func('ab', 'ba'), False)
 
