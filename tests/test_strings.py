@@ -37,5 +37,7 @@ def test_regex_match():
     expect(func('bbc', 'b.*'), True)
     expect(func('', '.*'), True)
     expect(func('', '.'), False)
+    expect(func('abab', 'a*b*c'), False)
+    expect(func('abab', 'a*b*'), False)
     expect(func('ab', 'ba'), False)
 
