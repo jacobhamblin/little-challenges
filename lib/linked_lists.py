@@ -60,3 +60,24 @@ def find_cycle(head):
         if tortoise == hare:
             return True
     return False
+
+def merge_sorted_lists(linked_lists):
+    sorted_nodes = []
+    if not linked_lists:
+        return sorted_nodes
+    while any(linked_lists):
+        minimum = [0, 999999999999]
+        list_index = 0
+        while list_index < len(linked_lists):
+            linked_list = linked_lists[list_index]
+            if linked_list and linked_list.value < minimum[1]:
+                minimum[1] = linked_list.value
+                minimum[0] = list_index
+            list_index += 1
+        sorted_nodes.append(linked_lists[minimum[0]])
+        linked_lists[minimum[0]] = linked_lists[minimum[0]].next
+        if len(sorted_nodes) != 1:
+            sorted_nodes[-2].next = sorted_nodes[-1]
+    if not len(sorted_nodes):
+        return sorted_nodes
+    return sorted_nodes[0]

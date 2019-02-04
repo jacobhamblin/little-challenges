@@ -32,3 +32,17 @@ def test_find_cycle():
     just_a_head = linked_lists.linked_list_from_list([3])
     helpers.expect_equal(linked_lists.find_cycle(just_a_head), False)
     helpers.expect_equal(linked_lists.find_cycle(None), False)
+
+def test_merge_sorted_lists():
+    expect = helpers.expect_equal
+    func = linked_lists.merge_sorted_lists
+    sorted_lists = [[3,7,10], [1,4,5], [1,3,6]]
+    a_head = linked_lists.linked_list_from_list(sorted_lists[0])
+    b_head = linked_lists.linked_list_from_list(sorted_lists[1])
+    c_head = linked_lists.linked_list_from_list(sorted_lists[2])
+    merged = func([a_head, b_head, c_head])
+    vals = []
+    while merged:
+        vals.append(merged.value)
+        merged = merged.next
+    expect(vals, sorted([val for list in sorted_lists for val in list]))
