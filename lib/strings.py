@@ -22,9 +22,7 @@ def longest_substring_no_duplicate(string):
     current = 0
     longest = 0
     i = 0
-    while True:
-        if i == len(string):
-            break
+    while i < len(string):
         letter = string[i]
         if letter in seen:
             if current > longest:
@@ -51,7 +49,25 @@ def longest_substring_no_duplicate_linear(string):
     return best
 
 def longest_substring_two_distinct_chars_at_most(string):
-    return 0
+    seen = set()
+    current = 0
+    longest = 0
+    current_start = 0
+    i = 0
+    while i < len(string):
+        letter = string[i]
+        if letter not in seen and len(seen) > 1:
+            if current > longest:
+                longest = current
+            i = current_start
+            current_start = i + 1
+            current = 0
+            seen.clear()
+        else:
+            seen.add(letter)
+            current += 1
+        i += 1
+    return longest if longest > current else current
 
 def regex_match(s, pattern):
     if not pattern:
