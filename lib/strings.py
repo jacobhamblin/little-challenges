@@ -17,7 +17,7 @@ def is_anagram(first, second):
             return False
     return True
 
-def longest_substring_without_duplicate(string):
+def longest_substring_no_duplicate(string):
     seen = {}
     current = 0
     longest = 0
@@ -37,6 +37,18 @@ def longest_substring_without_duplicate(string):
             current += 1
         i += 1
     return longest if longest > current else current
+
+def longest_substring_no_duplicate_linear(string):
+    best = 0
+    substring = ''
+    for char in string:
+        if char not in substring:
+            substring += char
+            best = max(best, len(substring))
+        else:
+            next_index = substring.index(char) + 1
+            substring = substring[next_index:] + char
+    return best
 
 def regex_match(s, pattern):
     if not pattern:

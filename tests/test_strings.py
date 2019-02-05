@@ -23,11 +23,15 @@ def test_is_anagram_normal_cases():
     expect(strings.is_anagram('re sd', 'dse r'), True)
 
 def test_longest_substring_without_duplicate():
-    func = strings.longest_substring_without_duplicate
-    expect(func('abcbabccb'), 3)
-    expect(func('twtadst'), 5)
-    expect(func('mbmbookl'), 3)
-    expect(func(''), 0)
+    FUNCTION_NAMES = {
+        'longest_substring_no_duplicate', 'longest_substring_no_duplicate_linear'
+    }
+    for function_name in FUNCTION_NAMES:
+        func = getattr(strings, function_name)
+        expect(func('abcbabccb'), 3)
+        expect(func('twtadst'), 5)
+        expect(func('mbmbookl'), 3)
+        expect(func(''), 0)
 
 def test_regex_match():
     FUNCTION_NAMES = {'regex_match', 'regex_match_linear'}
