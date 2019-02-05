@@ -50,6 +50,9 @@ def longest_substring_no_duplicate_linear(string):
             substring = substring[next_index:] + char
     return best
 
+def longest_substring_two_distinct_chars_at_most(string):
+    return 0
+
 def regex_match(s, pattern):
     if not pattern:
         return not s

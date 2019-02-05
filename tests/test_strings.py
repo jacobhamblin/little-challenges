@@ -33,6 +33,13 @@ def test_longest_substring_without_duplicate():
         expect(func('mbmbookl'), 3)
         expect(func(''), 0)
 
+def test_longest_substring_two_distinct_chars_at_most():
+    func = strings.longest_substring_two_distinct_chars_at_most
+    expect(func('abcbabccb'), 4)
+    expect(func('twtadst'), 3)
+    expect(func('mbmbookl'), 4)
+    expect(func(''), 0)
+
 def test_regex_match():
     FUNCTION_NAMES = {'regex_match', 'regex_match_linear'}
     for function_name in FUNCTION_NAMES:
