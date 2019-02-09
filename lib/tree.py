@@ -26,3 +26,25 @@ def get_deepest_node(root):
     helper(root, 0, depths)
     deepest = max(depths, key=lambda x: x[1])
     return deepest[0]
+
+def get_deepest_node_refactor(root):
+    def increment(node_and_depth):
+        node, depth = node_and_depth
+        return (node, depth + 1)
+
+    def helper(node):
+        if not node.left and not node.right:
+            return (node, 1)
+
+        if not node.left:
+            return increment(helper(node.right))
+        elif not node.right:
+            return increment(helper(node.left))
+
+        return increment(max(
+            helper(node.left),
+            helper(node.right),
+            key=lambda x: x[1],
+        ))
+
+    return helper(root)[0]

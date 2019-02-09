@@ -26,4 +26,5 @@ def test_node_count():
 
 def test_get_deepest_node():
     root = provide_tree()
-    expect(tree.get_deepest_node(root).value, 1)
+    for func in [tree.get_deepest_node, tree.get_deepest_node_refactor]:
+        expect(func(root).value, 1)
