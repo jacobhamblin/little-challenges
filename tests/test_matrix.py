@@ -14,6 +14,9 @@ def test_unique_paths():
     expect(func(8,8), 3432)
 
 def test_out_of_boundary_paths():
-    func = matrix.out_of_boundary_paths
-    expect(func(2, 2, 2, 0, 0), 4)
-    expect(func(1,3,3,0,1),12)
+    FUNCTION_NAMES = ['out_of_boundary_paths', 'out_of_boundary_paths_memo']
+    for function_name in FUNCTION_NAMES:
+        func = getattr(matrix, function_name)
+        expect(func(2, 2, 1, 0, 0), 2)
+        expect(func(2, 2, 2, 0, 0), 6)
+        expect(func(1,3,3,0,1),12)
