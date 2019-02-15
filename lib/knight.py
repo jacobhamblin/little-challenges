@@ -20,3 +20,19 @@ def dialer_memo(n, pos):
             memo[(n, pos)] = sum(move_sums)
             return memo[(n, pos)]
     return helper(n, pos)
+
+def dp(n, pos):
+    matrix = []
+    for num in xrange(n + 1):
+        matrix.append([1] * 10)
+    for row_index, row in enumerate(matrix):
+        if row_index == 0: continue
+        for col_index, col in enumerate(row):
+            if row_index == 1:
+                matrix[row_index][col_index] = len(MOVE_MAP[col_index])
+            else:
+                results = [matrix[row_index - 1][move] for move in MOVE_MAP[col_index]]
+                matrix[row_index][col_index] = sum([
+                   matrix[row_index - 1][move] for move in MOVE_MAP[col_index]
+                ])
+    return matrix[n][pos]
