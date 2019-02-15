@@ -8,3 +8,6 @@ def unique_paths(m, n):
             else:
                 matrix[row][col] = matrix[row + 1][col] + matrix[row][col + 1]
     return matrix[0][0]
+
+def out_of_boundary_paths(m, n, N, i, j):
+    return 0
