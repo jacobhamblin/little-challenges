@@ -42,3 +42,10 @@ def out_of_boundary_paths_memo(m, n, N, i, j):
         memo[(N, i, j)] = count
         return count
     return helper(N, i, j)
+
+def out_of_bounds_dp(m, n, N, i, j):
+    row = [0] * n
+    matrix = []
+    for index in m:
+        matrix.append(row)
+
