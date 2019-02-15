@@ -13,26 +13,23 @@ def dialer_memo(n, pos):
     def helper(n, pos):
         if (n, pos) in memo:
             return memo[(n, pos)]
-        else:
-            move_sums = [
-                helper(n - 1, move) for move in MOVE_MAP[pos]
-            ]
-            memo[(n, pos)] = sum(move_sums)
-            return memo[(n, pos)]
+        move_sums = [
+            helper(n - 1, move) for move in MOVE_MAP[pos]
+        ]
+        memo[(n, pos)] = sum(move_sums)
+        return memo[(n, pos)]
     return helper(n, pos)
 
 def dp(n, pos):
-    matrix = []
-    for num in xrange(n + 1):
-        matrix.append([1] * 10)
-    for row_index, row in enumerate(matrix):
-        if row_index == 0: continue
-        for col_index, col in enumerate(row):
-            if row_index == 1:
-                matrix[row_index][col_index] = len(MOVE_MAP[col_index])
-            else:
-                results = [matrix[row_index - 1][move] for move in MOVE_MAP[col_index]]
-                matrix[row_index][col_index] = sum([
-                   matrix[row_index - 1][move] for move in MOVE_MAP[col_index]
-                ])
-    return matrix[n][pos]
+    prior_case = [1] * 10
+    current_case = [0] * 10
+    cur_hops = 0
+    while cur_hops < n:
+        current_case = [0] * 10
+        cur_hops += 1
+
+        for col in xrange(0, 10):
+            for move in MOVE_MAP[col]:
+                current_case[col] += prior_case[move]
+        prior_case = current_case
+    return current_case[pos]
