@@ -3,9 +3,13 @@ from lib import knight
 
 
 expect = helpers.expect_equal
-
+FUNCTION_NAMES = ['dialer', 'dialer_memo']
 
 def test_dialer():
-    expect(knight.dialer(3, 1), 5)
-    expect(knight.dialer(3, 4), 4)
+    for function_name in FUNCTION_NAMES:
+        func = getattr(knight, function_name)
+        expect(func(1, 4), 3)
+        expect(func(2, 4), 6)
+        expect(func(3, 1), 10)
+        expect(func(3, 4), 14)
 
