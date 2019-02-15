@@ -8,7 +8,6 @@ def get_combinations(value, coins, coin_counts, combinations):
             new_value = value - coin
             get_combinations(new_value, coins, new_coin_counts, combinations)
 
-
 def fewest_coins(value, coins):
     coin_counts = [0 for coin in coins]
     if value == 0:
@@ -18,7 +17,6 @@ def fewest_coins(value, coins):
     get_sum = lambda x, y: x + y
     counts = [reduce(get_sum, nums) for nums in combinations]
     return combinations[counts.index(min(counts))]
-
 
 def get_staircase_combinations(
         steps_remaining,
@@ -40,7 +38,6 @@ def get_staircase_combinations(
             combinations
         )
 
-
 def staircase(total_steps, step_increments):
     combinations = []
     get_staircase_combinations(
@@ -50,3 +47,12 @@ def staircase(total_steps, step_increments):
         combinations
     )
     return len(combinations)
+
+def fewest_coins_num_used(val, coins):
+    if val == 0:
+        return 0
+    for coin in coins[::-1]:
+        if val - coin > -1:
+            recursed = fewest_coins_num_used(val - coin, coins)
+            if recursed or recursed is 0:
+                return 1 + recursed
