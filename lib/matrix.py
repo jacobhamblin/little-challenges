@@ -44,8 +44,26 @@ def out_of_boundary_paths_memo(m, n, N, i, j):
     return helper(N, i, j)
 
 def out_of_bounds_dp(m, n, N, i, j):
+    moves = ((-1, 0), (0, 1), (1, 0), (0, -1))
     row = [0] * n
     matrix = []
-    for index in m:
+    for index in xrange(m):
         matrix.append(row)
-
+    while N > 0:
+        for row in xrange(0, m):
+            if N is 1:
+                if row is 0 or row is m - 1: count = 1
+            for col in xrange(0, n):
+                if N is 1:
+                    if col is 0 or col is n - 1: count += 1
+                else:
+                    count = matrix[row][col]
+                    for move in moves:
+                        new_pos = (row + move[0], col + move[1])
+                        if not out_of_bounds(m, n, new_pos[0], new_pos[1]):
+                            count += matrix[new_pos[0]][new_pos[1]]
+                print(count)
+                matrix[row][col] = count
+        N -= 1
+    print(matrix)
+    return matrix[i][j]
