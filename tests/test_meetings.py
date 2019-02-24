@@ -29,7 +29,7 @@ def test_most_meetings():
     ])
 
 def test_most_time():
-    FUNCTION_NAMES = ['most_time', 'most_time_more_natural', ]
+    FUNCTION_NAMES = ['most_time', 'most_time_more_natural', 'most_time_dp']
     for function_name in FUNCTION_NAMES:
         func = getattr(meetings, function_name)
         data_set = [
@@ -43,9 +43,9 @@ def test_most_time():
         names = [meeting.get('who') for meeting in most_time]
         expect(sorted(names), sorted(['Marco', 'Tony', 'Eliza']))
         data_set = [
-            {'who': 'Amara', 'duration': 5, 'id': 6},
+            {'who': 'Amara', 'duration': 6, 'id': 6},
             {'who': 'Tony', 'duration': 4, 'id': 7},
-            {'who': 'Eliza', 'duration': 3.5, 'id': 8},
+            {'who': 'Eliza', 'duration': 3, 'id': 8},
         ]
         most_time = func(data_set, 8)
         names = [meeting.get('who') for meeting in most_time]

@@ -75,27 +75,21 @@ def most_time_dp(meetings, availability):
         best = [0, 0]
         for meeting in meetings:
             if index - meeting.get('duration') >= 0:
-                print('last good', optimals[index - meeting.get('duration')],
-                        meeting)
                 prior = optimals[index - meeting.get('duration')]
                 if meeting.get('id') in prior.get('id_set'):
                     continue
                 new_sum = meeting.get('duration') + prior.get('value')
-                if new_sum > best[0] and new_sum < availability:
-                    print('better sum', new_sum, meeting)
+                if new_sum > best[0] and new_sum <= availability:
                     best[0] = new_sum
                     best[1] = meeting
         if best[1] is not 0:
             last_best = optimals[index - best[1].get('duration')]
-            print('last best', last_best)
             new_meetings = list(last_best.get('meetings'))
             new_meetings.append(best[1])
             id_set = copy(last_best.get('id_set'))
             id_set.add(best[1].get('id'))
             next_item = {'meetings': new_meetings, 'value': best[0], 'id_set': id_set}
             optimals.append(next_item)
-            print('optimals', optimals)
         else:
-            print('nothing better found', index)
             optimals.append(optimals[index - 1])
-    return optimals[availability]
+    return optimals[availability].get('meetings')
