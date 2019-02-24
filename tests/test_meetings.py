@@ -52,3 +52,4 @@ def test_most_time():
             {'who': 'Tony', 'duration': 4},
             {'who': 'Eliza', 'duration': 3.5},
         ])
+        expect(func([{'duration': 9}], 8), [])

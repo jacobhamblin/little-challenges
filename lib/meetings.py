@@ -30,6 +30,7 @@ def most_time(meetings, availability):
         if summed > best[1] and summed <= availability:
             best[1] = summed
             best[0] = index
+    if best[1] == 0: return []
     return [
         meetings[i] for i in xrange(len(meeting_combos[best[0]]))
         if meeting_combos[best[0]][i]
@@ -54,6 +55,7 @@ def most_time_more_natural(meetings, availability):
     combos = []
     cur_combo = []
     helper(meetings, availability, combos, cur_combo)
+    if not len(combos): return combos
     durations = [
         [meeting.get('duration') for meeting in combo] for combo in combos
     ]
