@@ -1,3 +1,5 @@
+from copy import copy
+
 def most_meetings(meetings, availability):
     def get_duration(meeting):
         return meeting.get('duration')
@@ -66,3 +68,34 @@ def most_time_more_natural(meetings, availability):
             best[1] = summed
             best[0] = index
     return combos[best[0]]
+
+def most_time_dp(meetings, availability):
+    optimals = [{'meetings': [], 'value': 0, 'id_set': set()}]
+    for index in xrange(1, availability + 1):
+        best = [0, 0]
+        for meeting in meetings:
+            if index - meeting.get('duration') >= 0:
+                print('last good', optimals[index - meeting.get('duration')],
+                        meeting)
+                prior = optimals[index - meeting.get('duration')]
+                if meeting.get('id') in prior.get('id_set'):
+                    continue
+                new_sum = meeting.get('duration') + prior.get('value')
+                if new_sum > best[0] and new_sum < availability:
+                    print('better sum', new_sum, meeting)
+                    best[0] = new_sum
+                    best[1] = meeting
+        if best[1] is not 0:
+            last_best = optimals[index - best[1].get('duration')]
+            print('last best', last_best)
+            new_meetings = list(last_best.get('meetings'))
+            new_meetings.append(best[1])
+            id_set = copy(last_best.get('id_set'))
+            id_set.add(best[1].get('id'))
+            next_item = {'meetings': new_meetings, 'value': best[0], 'id_set': id_set}
+            optimals.append(next_item)
+            print('optimals', optimals)
+        else:
+            print('nothing better found', index)
+            optimals.append(optimals[index - 1])
+    return optimals[availability]
