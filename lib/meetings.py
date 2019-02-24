@@ -14,4 +14,53 @@ def most_meetings(meetings, availability):
     return shortest_first[:i]
 
 def most_time(meetings, availability):
-    return meetings
+    meeting_combos = []
+    for index in xrange(len(meetings)):
+        if index == 0:
+            meeting_combos += [[meetings[0].get('duration')], [0]]
+        else:
+            for row_i in xrange(len(meeting_combos)):
+                copied_row = list(meeting_combos[row_i])
+                copied_row.append(0)
+                meeting_combos[row_i].append(meetings[index].get('duration'))
+                meeting_combos.append(copied_row)
+    best = [0, 0]
+    for index in xrange(len(meeting_combos)):
+        summed = sum(meeting_combos[index]) 
+        if summed > best[1] and summed <= availability:
+            best[1] = summed
+            best[0] = index
+    return [
+        meetings[i] for i in xrange(len(meeting_combos[best[0]]))
+        if meeting_combos[best[0]][i]
+    ]
+
+def most_time_more_natural(meetings, availability):
+    def helper(meetings, avail, combos, cur_combo):
+        if avail == 0 or not len(meetings):
+            combos.append(cur_combo)
+        for meeting in meetings:
+            if avail - meeting.get('duration') >= 0:
+                new_meetings = list(meetings)
+                new_meetings.remove(meeting)
+                new_cur_combo = list(cur_combo)
+                new_cur_combo.append(meeting)
+                new_avail = avail - meeting.get('duration')
+                helper(new_meetings, new_avail, combos, new_cur_combo)
+            else:
+                new_meetings = list(meetings)
+                new_meetings.remove(meeting)
+                helper(new_meetings, avail, combos, cur_combo)
+    combos = []
+    cur_combo = []
+    helper(meetings, availability, combos, cur_combo)
+    durations = [
+        [meeting.get('duration') for meeting in combo] for combo in combos
+    ]
+    best = [0, 0]
+    for index in xrange(len(durations)):
+        summed = sum(durations[index]) 
+        if summed > best[1] and summed <= availability:
+            best[1] = summed
+            best[0] = index
+    return combos[best[0]]
