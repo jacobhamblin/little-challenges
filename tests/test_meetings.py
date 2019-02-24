@@ -14,9 +14,9 @@ def test_most_meetings():
         {'who': 'Jill', 'duration': 4},
     ]
     expect(meetings.most_meetings(data_set, 8), [
-        {'who': 'Jill', 'duration': 4},
-        {'who': 'Tony', 'duration': 2},
         {'who': 'Eliza', 'duration': 1},
+        {'who': 'Tony', 'duration': 2},
+        {'who': 'Jill', 'duration': 4},
     ])
     data_set = [
         {'who': 'Amara', 'duration': 5},
