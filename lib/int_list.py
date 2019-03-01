@@ -14,24 +14,24 @@ def get_mode(arr):
     return result
 
 # [2, 4, 6, 10], 12
-def num_subsets_add_to_k_dp(nums, k):
-    memo = [1]
-    for i in xrange(1, k + 1):
-        num_combos = 0
-        used = set()
-        for num in nums:
-            if (i - num) in used:
-                continue
-            prior = i - num
-            if num is i: num_combos += 1
-            elif prior > 0 and num < i:
-                if prior is not num and memo[num]:
-                    print('prior is not num memo[num]', i, num, prior, memo[num])
-                    num_combos += memo[prior] 
-                    used.add(num)
-        memo.append(num_combos)
-    print(memo)
-    return memo[k]
+def num_subsets_add_to_k_memoized(nums, k):
+    memo = {}
+    def helper(nums, k, index):
+        if (k, index) in memo:
+            return memo[(k, index)]
+        if k == 0:
+            memo[(k, index)] = 1
+        elif index < 0 or k < 0:
+            memo[(k, index)] = 0
+        elif k < nums[index]:
+            memo[(k, index)] = helper(nums, k, index - 1)
+        else:
+            memo[(k, index)] = (
+                helper(nums, k - nums[index], index - 1) + 
+                helper(nums, k, index - 1)
+            )
+        return memo[(k, index)]
+    return helper(nums, k, len(nums) - 1)
 
 def num_subsets_add_to_k(nums, k):
     combinations = [[]]
