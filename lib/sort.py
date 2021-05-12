@@ -1,5 +1,6 @@
 from math import log
 
+
 def quicksort(array):
     if len(array) < 2:
         return array
@@ -52,7 +53,7 @@ def merge(left, right):
 def merge_sort(array):
     if len(array) < 2:
         return array
-    mid = len(array)/2
+    mid = len(array) / 2
     left = array[:mid]
     right = array[mid:]
     left = merge_sort(left)
@@ -75,33 +76,27 @@ class Radix:
     def __init__(self, array, base=10):
         self.array = array
         self.base = base
- 
 
     def get_digit(self, num, base, digit_num):
-        return (num // base ** digit_num) % base  
- 
+        return (num // base ** digit_num) % base
 
     def make_blanks(self, size):
-        return [ [] for i in range(size) ]  
- 
+        return [[] for i in range(size)]
 
     def split(self, array, base, digit_num):
         buckets = self.make_blanks(base)
         for num in array:
-            buckets[self.get_digit(num, base, digit_num)].append(num)  
+            buckets[self.get_digit(num, base, digit_num)].append(num)
         return buckets
-     
 
     def merge(self, array):
         new_list = []
         for sublist in array:
-           new_list.extend(sublist)
+            new_list.extend(sublist)
         return new_list
-     
 
     def max_abs(self, array):
         return max(abs(num) for num in array)
-     
 
     def split_by_sign(self, array):
         buckets = [[], []]
@@ -111,12 +106,10 @@ class Radix:
             else:
                 buckets[1].append(num)
         return buckets
- 
 
     def sort(self):
-        passes = int(round(log(self.max_abs(self.array), self.base)) + 1) 
+        passes = int(round(log(self.max_abs(self.array), self.base)) + 1)
         new_list = list(self.array)
         for digit_num in range(passes):
             new_list = self.merge(self.split(new_list, self.base, digit_num))
         return self.merge(self.split_by_sign(new_list))
-     

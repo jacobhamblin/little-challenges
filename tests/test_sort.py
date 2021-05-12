@@ -2,13 +2,11 @@ from . import helpers
 from lib import sort
 
 
-SORTING_ALGORITHMS = ['quicksort', 'quicksort_in_place', 'merge_sort', 'insertion']
+SORTING_ALGORITHMS = ["quicksort", "quicksort_in_place", "merge_sort", "insertion"]
 
 
 def test_sorts_small_list():
-    unsorted_arrays = [
-        [5, 4], [3, 1, 2], [4.2, 18.9, 2.1], [300, 9, 1], [1, 4, 8, 3]
-    ]
+    unsorted_arrays = [[5, 4], [3, 1, 2], [4.2, 18.9, 2.1], [300, 9, 1], [1, 4, 8, 3]]
     for function_name in SORTING_ALGORITHMS:
         function = getattr(sort, function_name)
         for array in unsorted_arrays:
@@ -16,9 +14,7 @@ def test_sorts_small_list():
 
 
 def test_sorts_duplicates():
-    unsorted_arrays = [
-        [3, 1, 5, 5, 2, 8, 6, 5], [1, 1, 1], [0, -1, -3, 0, -1, 7]
-    ]
+    unsorted_arrays = [[3, 1, 5, 5, 2, 8, 6, 5], [1, 1, 1], [0, -1, -3, 0, -1, 7]]
     for function_name in SORTING_ALGORITHMS:
         function = getattr(sort, function_name)
         for array in unsorted_arrays:

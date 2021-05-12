@@ -1,2 +1,2 @@
 import num_interpretations
-import possible_bin_str 
+import possible_bin_str

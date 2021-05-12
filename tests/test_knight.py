@@ -3,7 +3,8 @@ from lib import knight
 
 
 expect = helpers.expect_equal
-FUNCTION_NAMES = ['dialer', 'dialer_memo', 'dp']
+FUNCTION_NAMES = ["dialer", "dialer_memo", "dp"]
+
 
 def test_dialer():
     for function_name in FUNCTION_NAMES:

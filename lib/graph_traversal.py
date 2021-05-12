@@ -2,8 +2,9 @@ class GraphNode:
     def __init__(self, value, connected_nodes=[]):
         self.value = value
         self.connected_nodes = connected_nodes
+
     def __str__(self):
-        return 'GraphNode-%s' % self.value
+        return "GraphNode-%s" % self.value
 
     def add_connection(self, node):
         if not node in self.connected_nodes:
@@ -27,7 +28,7 @@ def generate_graph_from_dict(graph_dictionary):
 
 def make_unvisited_graph_dict_nodes(graph_dict):
     for key, _ in graph_dict.iteritems():
-        setattr(graph_dict[key], 'visited', False)
+        setattr(graph_dict[key], "visited", False)
     return graph_dict
 
 
@@ -35,10 +36,10 @@ def dfs(current, target):
     if current.value == target:
         return current
     for connected_node in current.connected_nodes:
-        visited = getattr(connected_node, 'visited', None)
+        visited = getattr(connected_node, "visited", None)
         if visited:
             continue
-        setattr(connected_node, 'visited', True)
+        setattr(connected_node, "visited", True)
         recursed = dfs(connected_node, target)
         if recursed:
             return recursed
@@ -48,9 +49,9 @@ def _bfs(target, node_queue):
     node = node_queue[0]
     if node.value == target:
         return node
-    setattr(node, 'visited', True)
+    setattr(node, "visited", True)
     for connected_node in node.connected_nodes:
-        visited = getattr(connected_node, 'visited', None)
+        visited = getattr(connected_node, "visited", None)
         if not visited:
             node_queue.append(connected_node)
     recursed = _bfs(target, node_queue[1:])

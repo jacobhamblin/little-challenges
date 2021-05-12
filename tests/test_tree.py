@@ -20,9 +20,11 @@ def provide_tree():
     root.left.left.add_left(left_left_left)
     return root
 
+
 def test_node_count():
     root = provide_tree()
     expect(tree.node_count(root), 6)
+
 
 def test_get_deepest_node():
     root = provide_tree()

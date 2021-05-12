@@ -17,6 +17,7 @@ def is_anagram(first, second):
             return False
     return True
 
+
 def longest_substring_no_duplicate(string):
     seen = {}
     current = 0
@@ -36,9 +37,10 @@ def longest_substring_no_duplicate(string):
         i += 1
     return longest if longest > current else current
 
+
 def longest_substring_no_duplicate_linear(string):
     best = 0
-    substring = ''
+    substring = ""
     for char in string:
         if char not in substring:
             substring += char
@@ -47,6 +49,7 @@ def longest_substring_no_duplicate_linear(string):
             next_index = substring.index(char) + 1
             substring = substring[next_index:] + char
     return best
+
 
 def longest_substring_two_distinct_chars_at_most(string):
     seen = set()
@@ -69,32 +72,35 @@ def longest_substring_two_distinct_chars_at_most(string):
         i += 1
     return longest if longest > current else current
 
+
 def regex_match(s, pattern):
     if not pattern:
         return not s
 
-    first_match = bool(s) and pattern[0] in {s[0], '.'}
+    first_match = bool(s) and pattern[0] in {s[0], "."}
 
-    if len(pattern) > 1 and pattern[1] == '*':
+    if len(pattern) > 1 and pattern[1] == "*":
         return (
-            regex_match(s, pattern[2:]) or first_match
-            and regex_match(s[1:], pattern)
+            regex_match(s, pattern[2:]) or first_match and regex_match(s[1:], pattern)
         )
     else:
         return first_match and regex_match(s[1:], pattern[1:])
 
+
 def regex_match_linear(s, pattern):
     memo = {}
+
     def dp(i, j):
         if (i, j) not in memo:
             if j == len(pattern):
                 ans = i == len(s)
             else:
-                first_match = i < len(s) and pattern[j] in {s[i], '.'}
-                if j + 1 < len(pattern) and pattern[j + 1] == '*':
+                first_match = i < len(s) and pattern[j] in {s[i], "."}
+                if j + 1 < len(pattern) and pattern[j + 1] == "*":
                     ans = dp(i, j + 2) or first_match and dp(i + 1, j)
                 else:
                     ans = first_match and dp(i + 1, j + 1)
             memo[i, j] = ans
         return memo[i, j]
+
     return dp(0, 0)

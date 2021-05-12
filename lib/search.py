@@ -1,13 +1,13 @@
 def bin_recur(list, value):
     if not len(list):
         return -1
-    mid = len(list)/2
+    mid = len(list) / 2
     if list[mid] == value:
         return mid
     if list[mid] > value:
         return bin_recur(list[0:mid], value)
     else:
-        rest = bin_recur(list[mid + 1:len(list)], value)
+        rest = bin_recur(list[mid + 1 : len(list)], value)
         if rest is -1:
             return -1
         return mid + 1 + rest
@@ -47,7 +47,7 @@ def bin_recur_iter(list, value):
 
 
 BINARY = {
-    'recur': bin_recur,
-    'recur_with_indices': bin_recur_indices,
-    'recur_iter': bin_recur_iter,
+    "recur": bin_recur,
+    "recur_with_indices": bin_recur_indices,
+    "recur_iter": bin_recur_iter,
 }

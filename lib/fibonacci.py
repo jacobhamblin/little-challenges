@@ -33,6 +33,6 @@ def iterative_two(n):
 
 
 FIBONACCI = {
-    'slow': [recur],
-    'fast': [memo, iterative, iterative_two],
+    "slow": [recur],
+    "fast": [memo, iterative, iterative_two],
 }

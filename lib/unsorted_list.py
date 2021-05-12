@@ -15,6 +15,7 @@ def kth_smallest(unsorted_list, k):
     else:
         return first_item
 
+
 def kth_smallest_in_place(arr, k):
     if k > len(arr):
         return None
@@ -31,11 +32,11 @@ def kth_smallest_in_place(arr, k):
         return kth_smallest_in_place(arr[:pivot_index], k)
     elif k > pivot_index + pivot_count:
         return kth_smallest_in_place(
-            arr[pivot_index + pivot_count:],
-            k - (pivot_index + pivot_count)
+            arr[pivot_index + pivot_count :], k - (pivot_index + pivot_count)
         )
     else:
         return arr[pivot_index]
+
 
 def kth_largest(unsorted_list, k):
     if k > len(unsorted_list):
@@ -54,6 +55,7 @@ def kth_largest(unsorted_list, k):
     else:
         return first_item
 
+
 def largest_sum_non_adjacent(arr):
     inc = 0
     exc = 0
@@ -65,6 +67,7 @@ def largest_sum_non_adjacent(arr):
 
     return exc if exc > inc else inc
 
+
 def pairs_add_to_k(arr, k):
     pairs = set()
     for first in xrange(0, len(arr)):
@@ -73,6 +76,7 @@ def pairs_add_to_k(arr, k):
                 if (arr[second], arr[first]) not in pairs:
                     pairs.add((arr[first], arr[second]))
     return pairs
+
 
 def pairs_add_to_k_linear(arr, k):
     pairs = set()
@@ -85,9 +89,11 @@ def pairs_add_to_k_linear(arr, k):
             partials.add(num)
     return pairs
 
+
 def merge_sorted_lists_kn_log_kn(arrs):
     flat = [el for arr in arrs for el in arr]
     return sorted(flat)
+
 
 def merge_sorted_lists_kn_log_k(arrs):
     num_arrs = len(arrs)

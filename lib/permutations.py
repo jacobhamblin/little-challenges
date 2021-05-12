@@ -8,7 +8,7 @@ def get_perms(permutations, remaining):
         for i in xrange(0, len(existing_perm) + 1):
             new_perm = list(existing_perm)
             new_perm.insert(i, next)
-            new_perms.append(''.join(new_perm))
+            new_perms.append("".join(new_perm))
         new_permutations += new_perms
     return get_perms(new_permutations, remaining[1:])
 
@@ -39,7 +39,7 @@ def iterate(input):
             for i in xrange(0, len(existing_perm) + 1):
                 new_perm = list(existing_perm)
                 new_perm.insert(i, next)
-                new_perms.append(''.join(new_perm))
+                new_perms.append("".join(new_perm))
             new_permutations += new_perms
         permutations = new_permutations
     return list(set(permutations))
@@ -48,16 +48,16 @@ def iterate(input):
 def two_from_wild(str, index):
     first = list(str)
     second = list(str)
-    first[index] = '0'
-    second[index] = '1'
-    return [''.join(first), ''.join(second)]
+    first[index] = "0"
+    second[index] = "1"
+    return ["".join(first), "".join(second)]
 
 
 def binary_string_recurse(str):
     list_str = list(str)
     wilds = []
     for index, char in enumerate(list_str):
-        if char == '?':
+        if char == "?":
             wilds.append(index)
     strings = [str]
     if not len(wilds):
@@ -72,7 +72,7 @@ def binary_string_iterate(str):
     wilds = []
     strings = [str]
     for index, char in enumerate(list_str):
-        if char == '?':
+        if char == "?":
             wilds.append(index)
     while len(wilds):
         next_index = wilds.pop(0)
@@ -80,9 +80,9 @@ def binary_string_iterate(str):
         for str_index, string in enumerate(strings):
             first = list(string)
             second = list(string)
-            first[next_index] = '0'
-            second[next_index] = '1'
-            new_strings.append(''.join(first))
-            new_strings.append(''.join(second))
+            first[next_index] = "0"
+            second[next_index] = "1"
+            new_strings.append("".join(first))
+            new_strings.append("".join(second))
         strings = new_strings
     return strings

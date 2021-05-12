@@ -18,6 +18,7 @@ def linked_list_from_list(list):
             list_of_nodes[index - 1].set_next(item)
     return list_of_nodes[0]
 
+
 def common_node(first_node, second_node):
     first_length = 1
     second_length = 1
@@ -49,6 +50,7 @@ def common_node(first_node, second_node):
         other_node = other_node.next
     return None
 
+
 def find_cycle(head):
     if not head or not head.next:
         return False
@@ -60,6 +62,7 @@ def find_cycle(head):
         if tortoise == hare:
             return True
     return False
+
 
 def merge_sorted_lists(linked_lists):
     sorted_nodes = []
