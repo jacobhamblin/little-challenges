@@ -1,6 +1,5 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 19.10b
+-   repo: https://github.com/ambv/black
+    rev: stable
     hooks:
-      - id: black
-        args: [--target-version=py35]
+    - id: black
