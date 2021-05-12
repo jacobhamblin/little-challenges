@@ -20,17 +20,17 @@ def most_meetings(meetings, availability):
 
 def most_time(meetings, availability):
     meeting_combos = []
-    for index in xrange(len(meetings)):
+    for index in range(len(meetings)):
         if index == 0:
             meeting_combos += [[meetings[0].get("duration")], [0]]
         else:
-            for row_i in xrange(len(meeting_combos)):
+            for row_i in range(len(meeting_combos)):
                 copied_row = list(meeting_combos[row_i])
                 copied_row.append(0)
                 meeting_combos[row_i].append(meetings[index].get("duration"))
                 meeting_combos.append(copied_row)
     best = [0, 0]
-    for index in xrange(len(meeting_combos)):
+    for index in range(len(meeting_combos)):
         summed = sum(meeting_combos[index])
         if summed > best[1] and summed <= availability:
             best[1] = summed
@@ -39,7 +39,7 @@ def most_time(meetings, availability):
         return []
     return [
         meetings[i]
-        for i in xrange(len(meeting_combos[best[0]]))
+        for i in range(len(meeting_combos[best[0]]))
         if meeting_combos[best[0]][i]
     ]
 
@@ -68,7 +68,7 @@ def most_time_more_natural(meetings, availability):
         return combos
     durations = [[meeting.get("duration") for meeting in combo] for combo in combos]
     best = [0, 0]
-    for index in xrange(len(durations)):
+    for index in range(len(durations)):
         summed = sum(durations[index])
         if summed > best[1] and summed <= availability:
             best[1] = summed
@@ -78,7 +78,7 @@ def most_time_more_natural(meetings, availability):
 
 def most_time_dp(meetings, availability):
     optimals = [{"meetings": [], "value": 0, "id_set": set()}]
-    for index in xrange(1, availability + 1):
+    for index in range(1, availability + 1):
         best = [0, 0]
         for meeting in meetings:
             if index - meeting.get("duration") >= 0:

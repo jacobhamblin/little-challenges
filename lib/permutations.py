@@ -5,7 +5,7 @@ def get_perms(permutations, remaining):
     new_permutations = []
     for existing_perm in permutations:
         new_perms = []
-        for i in xrange(0, len(existing_perm) + 1):
+        for i in range(0, len(existing_perm) + 1):
             new_perm = list(existing_perm)
             new_perm.insert(i, next)
             new_perms.append("".join(new_perm))
@@ -36,7 +36,7 @@ def iterate(input):
         new_permutations = []
         for existing_perm in permutations:
             new_perms = []
-            for i in xrange(0, len(existing_perm) + 1):
+            for i in range(0, len(existing_perm) + 1):
                 new_perm = list(existing_perm)
                 new_perm.insert(i, next)
                 new_perms.append("".join(new_perm))

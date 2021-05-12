@@ -4,7 +4,7 @@ from math import log
 def quicksort(array):
     if len(array) < 2:
         return array
-    pivot = array[len(array) / 2]
+    pivot = array[len(array) // 2]
     less = [num for num in array if num < pivot]
     more = [num for num in array if num > pivot]
     return quicksort(less) + [pivot] * array.count(pivot) + quicksort(more)
@@ -53,7 +53,7 @@ def merge(left, right):
 def merge_sort(array):
     if len(array) < 2:
         return array
-    mid = len(array) / 2
+    mid = len(array) // 2
     left = array[:mid]
     right = array[mid:]
     left = merge_sort(left)
@@ -62,7 +62,7 @@ def merge_sort(array):
 
 
 def insertion(array):
-    for i in xrange(1, len(array)):
+    for i in range(1, len(array)):
         j = i - 1
         key = array[i]
         while (array[j] > key) and (j >= 0):

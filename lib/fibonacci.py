@@ -16,7 +16,7 @@ def memo(n):
 
 def iterative(n):
     recorded = {0: 0, 1: 1}
-    for num in xrange(2, n + 1):
+    for num in range(2, n + 1):
         recorded[num] = recorded[num - 2] + recorded[num - 1]
     return recorded[n]
 
@@ -25,7 +25,7 @@ def iterative_two(n):
     prev = 1
     current = 0
     i = 0
-    for num in xrange(n):
+    for num in range(n):
         next = prev + current
         prev = current
         current = next

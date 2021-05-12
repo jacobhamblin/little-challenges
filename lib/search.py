@@ -1,7 +1,7 @@
 def bin_recur(list, value):
     if not len(list):
         return -1
-    mid = len(list) / 2
+    mid = len(list) // 2
     if list[mid] == value:
         return mid
     if list[mid] > value:
@@ -16,7 +16,7 @@ def bin_recur(list, value):
 def _bin_recur_indices(list, value, start, end):
     if end < start:
         return -1
-    mid_index = (end - start / 2) + start
+    mid_index = (end - start // 2) + start
     mid = list[mid_index]
     if mid == value:
         return mid_index
@@ -34,7 +34,7 @@ def bin_recur_iter(list, value):
     start = 0
     end = len(list) - 1
     while end > start:
-        mid_index = (end - start / 2) + start
+        mid_index = (end - start // 2) + start
         if list[mid_index] == value:
             return mid_index
         elif list[mid_index] > value:

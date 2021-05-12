@@ -1,8 +1,11 @@
+from functools import reduce
+
+
 def get_combinations(value, coins, coin_counts, combinations):
     if value == 0:
         combinations.append(coin_counts)
     for index, coin in enumerate(coins):
-        if (value / coin) >= 1:
+        if (value // coin) >= 1:
             new_coin_counts = list(coin_counts)
             new_coin_counts[index] += 1
             new_value = value - coin

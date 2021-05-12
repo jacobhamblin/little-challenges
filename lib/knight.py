@@ -51,7 +51,7 @@ def dp(n, pos):
         current_case = [0] * 10
         cur_hops += 1
 
-        for col in xrange(0, 10):
+        for col in range(0, 10):
             for move in MOVE_MAP[col]:
                 current_case[col] += prior_case[move]
         prior_case = current_case

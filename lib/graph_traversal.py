@@ -15,19 +15,19 @@ class GraphNode:
 
 def generate_graph_from_dict(graph_dictionary):
     nodes = {}
-    for key, value_list in graph_dictionary.iteritems():
+    for key, value_list in graph_dictionary.items():
         nodes[key] = GraphNode(key, [])
         for graph_node_value in value_list:
             if not graph_node_value in nodes:
                 nodes[graph_node_value] = GraphNode(graph_node_value)
-    for key, value_list in graph_dictionary.iteritems():
+    for key, value_list in graph_dictionary.items():
         for connected_node_value in value_list:
             nodes[key].add_connection(nodes[connected_node_value])
     return nodes
 
 
 def make_unvisited_graph_dict_nodes(graph_dict):
-    for key, _ in graph_dict.iteritems():
+    for key, _ in graph_dict.items():
         setattr(graph_dict[key], "visited", False)
     return graph_dict
 

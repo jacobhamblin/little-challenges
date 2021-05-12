@@ -42,7 +42,7 @@ def num_subsets_add_to_k_memoized(nums, k):
 def num_subsets_add_to_k(nums, k):
     combinations = [[]]
     for num in nums:
-        for index in xrange(len(combinations)):
+        for index in range(len(combinations)):
             cloned = list(combinations[index])
             combinations[index].append(num)
             combinations.append(cloned)
@@ -55,9 +55,9 @@ def shortest_continuous_subarray(int_set, random_ints):
         return []
     best = sys.maxsize
     best_indices = []
-    for start_index in xrange(len(random_ints)):
+    for start_index in range(len(random_ints)):
         ints_seen = set()
-        for current_index in xrange(start_index, len(random_ints)):
+        for current_index in range(start_index, len(random_ints)):
             current_num = random_ints[current_index]
             if current_num in int_set:
                 ints_seen.add(current_num)
@@ -79,7 +79,7 @@ def shortest_continuous_subarray_linear(int_set, random_ints):
     ints_seen = {}
     first_index = sys.maxsize
     last_index = -sys.maxsize
-    for index in xrange(len(random_ints)):
+    for index in range(len(random_ints)):
         num = random_ints[index]
         if num in int_set:
             if index < first_index:

@@ -8,7 +8,7 @@ def longest_word(string, list_of_words):
     if not len(list_of_words):
         return ""
     available_letters = defaultdict(lambda: 0)
-    for index in xrange(0, len(string)):
+    for index in range(0, len(string)):
         available_letters[string[index]] += 1
     for index, word in enumerate(list_of_words):
         if len(word) > longest_length:

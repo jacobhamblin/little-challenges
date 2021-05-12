@@ -22,7 +22,7 @@ def kth_smallest_in_place(arr, k):
     if len(arr) == 1:
         return arr[0]
     pivot_index = 0
-    for ind in xrange(1, len(arr)):
+    for ind in range(1, len(arr)):
         if arr[ind] < arr[pivot_index]:
             val = arr.pop(ind)
             arr.insert(0, val)
@@ -70,8 +70,8 @@ def largest_sum_non_adjacent(arr):
 
 def pairs_add_to_k(arr, k):
     pairs = set()
-    for first in xrange(0, len(arr)):
-        for second in xrange(first + 1, len(arr)):
+    for first in range(0, len(arr)):
+        for second in range(first + 1, len(arr)):
             if arr[first] + arr[second] == k:
                 if (arr[second], arr[first]) not in pairs:
                     pairs.add((arr[first], arr[second]))
@@ -105,7 +105,7 @@ def merge_sorted_lists_kn_log_k(arrs):
     while any(unfinished):
         arr_index_with_min = 0
         min_num = 999999
-        for arr_index in xrange(len(arrs)):
+        for arr_index in range(len(arrs)):
             if unfinished[arr_index] == False:
                 continue
             index_to_consider = positions[arr_index]

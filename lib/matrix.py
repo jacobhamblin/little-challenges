@@ -56,14 +56,14 @@ def out_of_bounds_dp(m, n, N, i, j):
     moves = ((-1, 0), (0, 1), (1, 0), (0, -1))
     row = [0] * n
     matrix = []
-    for index in xrange(m):
+    for index in range(m):
         matrix.append(row)
     while N > 0:
-        for row in xrange(0, m):
+        for row in range(0, m):
             if N is 1:
                 if row is 0 or row is m - 1:
                     count = 1
-            for col in xrange(0, n):
+            for col in range(0, n):
                 if N is 1:
                     if col is 0 or col is n - 1:
                         count += 1
